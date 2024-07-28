@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     },
     actionButtonback: {
         right: 150,
-        top: 50,
+        top: 40,
       },
       actionButtonout: {
         top: 450,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginTop: 10,
         right: 100,
-        top: 15,
+        top: 5,
     },
     Textout: {
         color: '#ffffff',

@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TextInput, Button, TouchableOpacity, Image} from 'react-native';
+import { View, Text, StyleSheet, TextInput, Platform, TouchableOpacity, Image} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import {MaterialCommunityIcons, MaterialIcons, AntDesign} from '@expo/vector-icons';
+import { MaterialCommunityIcons, MaterialIcons, AntDesign} from '@expo/vector-icons';
 import { useAuth } from './AuthContext';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context'; //  react-native-safe-area-context
 
 const Login = () => {
   const navigation = useNavigation();
@@ -24,7 +25,8 @@ const Login = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaProvider>
+    <SafeAreaView style={styles.container}>
       <AntDesign
           name="left"
           onPress={() => {navigation.navigate('TopAndBot')}}
@@ -46,8 +48,8 @@ const Login = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Username"
-        placeholderTextColor={'#ffffff'}
+        placeholder="บัญชีผู้ใช้"
+        placeholderTextColor={'#c0c0c0'}
         value={username}
         onChangeText={setUsername}
       />
@@ -62,8 +64,8 @@ const Login = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Password"
-        placeholderTextColor={'#ffffff'}
+        placeholder="รหัสผ่าน" 
+        placeholderTextColor={'#c0c0c0'}
         value={password}
         onChangeText={setPassword}
         secureTextEntry={visible}
@@ -80,18 +82,28 @@ const Login = () => {
         />
       </TouchableOpacity>
       </View>
+      <View style={styles.Register}>
+        <Text style={styles.RegisterText}>คุณยังไม่มีบัญชี?</Text>
+      <Text style={styles.RegisterbtnText}
+      onPress={() => 
+        navigation.navigate('Register')}> 
+        ลงทะเบียน
+      </Text>
+      </View>
       <TouchableOpacity
-        style={styles.buttonLogin}
+        // style={styles.buttonLogin}
         onPress={handleLogin}
       >
         <Text style={styles.buttonText}>เข้าสู่ระบบ</Text>
       </TouchableOpacity>
-    </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    // paddingTop: Platform.OS === 'android' ? 10 : 0,
     flex: 1,
     backgroundColor: '#965bb2',
     justifyContent: 'center',
@@ -100,10 +112,11 @@ const styles = StyleSheet.create({
   },
   actionButtonlogin: {
     right: 150,
-    bottom: 30,
+    bottom: 50,
   },
   logoContainer: {
     alignItems: 'center',
+    bottom: 40,
   },
   logo: {
     width: 120,
@@ -114,7 +127,7 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontWeight: '500',
     fontSize: 20,
-    marginBottom: 40,
+    marginBottom: 30,
     marginTop: 10,
   },
   input: {
@@ -129,6 +142,7 @@ const styles = StyleSheet.create({
   },
   textAboveInput: {
     color: '#ffffff',
+    bottom: 30,
     marginBottom: 10,
     right: 90,
   },
@@ -141,12 +155,13 @@ const styles = StyleSheet.create({
     height: 50,
     textAlign: 'center',
     lineHeight: 50,
-    top: 20,
+    top: 10,
   },
   inputContainer:{
     width: '100%',
+    bottom: 30,
     borderRadius: 25,
-    marginBottom: 5,
+    // marginBottom: 1,
     justifyContent: 'center',
   },
   btnEye: {
@@ -169,6 +184,28 @@ const styles = StyleSheet.create({
     position: 'absolute',
     left: 10,
     bottom: 28,
+  },
+  Register: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 10,
+    bottom: 45,
+    right: 70,
+  },
+  RegisterText: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    color: '#ffffff',
+    marginRight: 3,
+    fontSize: 13,
+  },
+  RegisterbtnText: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    color: '#FBC938',
+    textDecorationLine: 'underline',
+    fontSize: 13,
   },
 });
 

@@ -51,7 +51,7 @@ const Topbar = () => {
           onPress={() => navigation.navigate('Menu')}
           size={30}
           color="white"
-          style={[styles.actionButton, styles.menuButton]}
+          style={[styles.actionButton]}
         />
       </Appbar.Header>
     </SafeAreaView>
@@ -80,11 +80,9 @@ const styles = StyleSheet.create({
       },
       actionButton: {
         bottom: 10,
-        marginLeft: 'auto',
+        left: 10,
+        // marginLeft: 'auto',
         marginHorizontal: 10,
-      },
-      menuButton: {
-        marginLeft: 'auto',
       },
       actionButtonlogin: {
         bottom: 11,

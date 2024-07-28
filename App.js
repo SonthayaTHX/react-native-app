@@ -6,6 +6,7 @@ import { AuthProvider } from './AuthContext';
 import TopAndBot from './TopAndBot';
 import Login from './Login';
 import Menu from './Menu';
+import Register from './Register';
 
 
 const Stack = createStackNavigator();
@@ -18,13 +19,16 @@ function App() {
       <Stack.Screen name="TopAndBot">
         {props => <TopAndBot {...props} />}
       </Stack.Screen> 
-
       <Stack.Screen name="Login" 
       component={Login} 
       options={{ headerShown: false }} 
       />
       <Stack.Screen name="Menu"
       component={Menu}
+      options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Register"
+      component={Register}
       options={{ headerShown: false }}
       />
       </Stack.Navigator>
